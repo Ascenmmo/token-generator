@@ -7,7 +7,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
-	tokentype "github.com/ascenmmo/token-generator.git/token_type"
+	tokentype "github.com/ascenmmo/token-generator/token_type"
 	"io"
 	"time"
 )

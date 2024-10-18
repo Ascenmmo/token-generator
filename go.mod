@@ -1,4 +1,4 @@
-module github.com/ascenmmo/token-generator.git
+module github.com/ascenmmo/token-generator
 
 go 1.23.2
 

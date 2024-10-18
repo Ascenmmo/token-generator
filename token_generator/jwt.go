@@ -2,7 +2,7 @@ package tokengenerator
 
 import (
 	"errors"
-	tokentype "github.com/ascenmmo/token-generator.git/token_type"
+	tokentype "github.com/ascenmmo/token-generator/token_type"
 	"github.com/dgrijalva/jwt-go"
 	"time"
 )

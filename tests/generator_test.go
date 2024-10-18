@@ -3,8 +3,8 @@ package tests
 import (
 	"context"
 	"fmt"
-	tokengenerator "github.com/ascenmmo/token-generator.git/token_generator"
-	tokentype "github.com/ascenmmo/token-generator.git/token_type"
+	tokengenerator "github.com/ascenmmo/token-generator/token_generator"
+	tokentype "github.com/ascenmmo/token-generator/token_type"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"runtime"

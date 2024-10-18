@@ -3,7 +3,7 @@ package tokengenerator
 import (
 	"errors"
 	"fmt"
-	tokentype "github.com/ascenmmo/token-generator.git/token_type"
+	tokentype "github.com/ascenmmo/token-generator/token_type"
 	"strings"
 )
 
