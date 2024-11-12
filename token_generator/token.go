@@ -15,6 +15,9 @@ type TokenGenerator interface {
 	ParseHash(hashData string) (txt string, err error)
 
 	PasswordHash(password string) (passwordHash string)
+
+	GenerateSecretHash(secret string) (secretHash string, err error)
+	ParseSecretHash(secretHash string) (secret string, err error)
 }
 
 const (
@@ -78,6 +81,14 @@ func (t *tokenGenerator) ParseHash(hashData string) (txt string, err error) {
 
 func (t *tokenGenerator) PasswordHash(password string) (passwordHash string) {
 	return t.passwordGenerator.generatePasswordHash(password)
+}
+
+func (t *tokenGenerator) GenerateSecretHash(secret string) (secretHash string, err error) {
+	return t.passwordGenerator.generateSecretHash(secret)
+}
+
+func (t *tokenGenerator) ParseSecretHash(secretHash string) (secret string, err error) {
+	return t.passwordGenerator.parseSecretHash(secretHash)
 }
 
 func getTokenAndType(tokenWithType string) (tokenType string, token string) {
