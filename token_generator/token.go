@@ -11,8 +11,8 @@ type TokenGenerator interface {
 	GenerateToken(info tokentype.Info, tokenType string) (token string, err error)
 	ParseToken(tokenWithType string) (info tokentype.Info, err error)
 
-	GenerateHash(txt string) (hashData string, err error)
-	ParseHash(hashData string) (txt string, err error)
+	GenerateUniqueHash(txt string) (hashData string, err error)
+	ParseUniqueHash(hashData string) (txt string, err error)
 
 	PasswordHash(password string) (passwordHash string)
 
@@ -71,11 +71,11 @@ func (t *tokenGenerator) ParseToken(tokenWithType string) (info tokentype.Info, 
 	}
 }
 
-func (t *tokenGenerator) GenerateHash(txt string) (hashData string, err error) {
+func (t *tokenGenerator) GenerateUniqueHash(txt string) (hashData string, err error) {
 	return t.hashGenerator.generateHash(txt)
 }
 
-func (t *tokenGenerator) ParseHash(hashData string) (txt string, err error) {
+func (t *tokenGenerator) ParseUniqueHash(hashData string) (txt string, err error) {
 	return t.hashGenerator.parseHash(hashData)
 }
 

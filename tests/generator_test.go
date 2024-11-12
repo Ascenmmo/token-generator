@@ -146,14 +146,14 @@ func TestGeneratorHash(t *testing.T) {
 
 	data := `super123_)"123"''!#!$I()_$.   	≈ç∆œ∆®øπ˜˚¬å˜ƒåƒ∆˚¬`
 
-	hashData, err := generator.GenerateHash(data)
+	hashData, err := generator.GenerateUniqueHash(data)
 	assert.Nil(t, err, "GenerateHash err expected nil")
 
-	txt, err := generator.ParseHash(hashData)
+	txt, err := generator.ParseUniqueHash(hashData)
 	assert.Nil(t, err, "ParseHash err expected nil")
 	assert.Equal(t, data, txt, "data and txt  equal")
 
-	newHashData, err := generator.GenerateHash(data)
+	newHashData, err := generator.GenerateUniqueHash(data)
 	assert.Nil(t, err, "GenerateHash err expected nil")
 	assert.NotEqual(t, hashData, newHashData, "hashData and newHashData not equal")
 }
@@ -183,8 +183,8 @@ func TestSecretHash(t *testing.T) {
 	newHashData, err := generator.GenerateSecretHash(data)
 	assert.Nil(t, err, "GenerateSecretHash err expected nil")
 
-	assert.Equal(t, hashData, newHashData, "data and hashData  equal")
-	assert.Equal(t, watingHash, newHashData, "data and watingHash  equal")
+	assert.Equal(t, hashData, newHashData, "newHashData and hashData  equal")
+	assert.Equal(t, watingHash, newHashData, "newHashData and watingHash  equal")
 
 	//parsing
 	secret, err := generator.ParseSecretHash(hashData)
@@ -195,4 +195,18 @@ func TestSecretHash(t *testing.T) {
 
 	assert.Equal(t, secret, newSecret)
 	assert.Equal(t, data, newSecret)
+
+	//generate parsed data
+	newParsedSecretHashData, err := generator.GenerateSecretHash(newSecret)
+	assert.Nil(t, err, "GenerateSecretHash newSecret err expected nil")
+
+	assert.Equal(t, hashData, newParsedSecretHashData, "hashData and hashData  equal")
+	assert.Equal(t, watingHash, newParsedSecretHashData, "watingHash and newParsedSecretHashData  equal")
+
+	newParsedSecret, err := generator.ParseSecretHash(newParsedSecretHashData)
+	assert.Nil(t, err, "ParseSecretHash newHashData err expected nil")
+
+	assert.Equal(t, secret, newParsedSecret)
+	assert.Equal(t, data, newParsedSecret)
+
 }
